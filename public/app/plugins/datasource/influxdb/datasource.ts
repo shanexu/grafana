@@ -58,6 +58,13 @@ export default class InfluxDatasource {
 
       // build query
       scopedVars.interval = {value: target.interval || options.interval};
+      var rp = '';
+      if (scopedVars.interval.value.endsWith('h')) {
+        rp = 'hour.';
+      } else if (scopedVars.interval.value.endsWith('d')) {
+        rp = 'day.';
+      }
+      scopedVars.rp = {value: rp};
 
       queryModel = new InfluxQuery(target, this.templateSrv, scopedVars);
       return queryModel.render(true);
@@ -278,4 +285,3 @@ export default class InfluxDatasource {
     return (date.valueOf() / 1000).toFixed(0) + 's';
   }
 }
-
