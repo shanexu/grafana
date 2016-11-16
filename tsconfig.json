@@ -12,7 +12,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
-    "files": [
+    "include": [
         "public/app/**/*.ts"
     ]
 }
